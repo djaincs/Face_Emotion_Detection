@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block style %}
+.container img {vertical-align: middle;}
+.img-container{
+    position: relative;
+  
+    margin: 0 auto;
+}
+.img-container .content {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+{% endblock style %}
+
+{% block body %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 ">
+                <div class="card img-container mt-4">
+                    <img src="/static/img/photo9.jpg" alt="Notebook" style="width:100%;">
+                    <div class="content">
+                        <h1>Emotion Detection</h1>
+                        <p>Classifying the emotion on the face as happy, angry, sad,
+                            neutral, surprise, disgust or fear.</p>
+                        <a class="btn btn-sm btn-light" href="/emotion-detection/">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock body %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block body%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 mt-4">
+                <div class="card-header border-0">
+                    <h1 class="text-center ">EMOTION-DETECTION</h1>
+                </div>
+
+
+                <div class="card-body">
+                    <img class="p-2" src="/static/img/photo9.jpg"
+                        style="float: right; width: 41.66%; border-radius: 20px;" alt="EMOTION-DETECTION">
+                    <div class="p-1">
+                        Humans have always had the innate ability to recognize and distinguish between faces. Now
+                        computers are able to do the same. This opens up tons of applications.
+                        <br><br>
+                        Computer vision (CV) is the field of study that helps computers to study using different
+                        techniques and methods so that it can capture what exists in an image or a video. There are a
+                        large number of applications of computer vision that are present today like facial recognition,
+                        driverless cars, medical diagnostics, etc. We will discuss one of the interesting applications
+                        of CV that is Emotion Detection through facial expressions. CV can recognize and tell you what
+                        your emotion is by just looking at your facial expressions. It can detect whether you are angry,
+                        happy, sad, etc.
+                        <br><br>
+                        In 2013, Ian Goodfellow along with his colleagues represented a paper in which he published
+                        three different datasets, and one of them was <b>Face Emotion Recognition</b>.
+                        <br>
+                        <b>Tools Used</b><br>
+                        Anaconda<br>Jupyter Notebook <br>VSCode<br>
+                        <b>Libraries Used</b><br>
+                        DeepFace<br>Opencv<br>Matplotlib
+                        <br><br><br>
+                        
+                        
+                        </em>
+                    </div>
+                    
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div>
+                Detecting your emotion is as easy as clicking an Execute and being directed to your <b>Webcam</b>.
+            </div>
+            <div>
+                
+                <a onclick="runEmotion()" class="btn btn-sm btn-outline-secondary" style="position: right;">Execute <span id="spinning" style="display:none;" class="fa fa-spinner  fa-spin"></span> </a> 
+        </div>
+        <span style="display:none;" id="displayaftrun">Please refer to the application opened in the task bar. To close the application - Press "q".</span>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div>
+                Detecting emotions by clicking an image can be done by clicking the <b>click</b> button below.
+            </div>
+            <div>
+                
+                <a href="/emotion-detection/static-image/" class="btn btn-sm btn-outline-secondary" style="position: right;">Click <i class="fa fa-arrow-right"></i> </a>
+        </div>
+        </div>
+    </div>
+ 
+</div>
+
+{% endblock body %}
+
+{% block script %}
+<script>
+    function runEmotion(){
+        document.getElementById("spinning").style.display = "inline-block";
+        document.getElementById("displayaftrun").style.display = "inline-block";
+        $.ajax({
+            url:"/emotion-detection/webcam/",
+            success:function(data){
+                data = JSON.parse(data);
+                console.log(data.status);
+                if (data.status === "q"){
+                    document.getElementById("spinning").style.display = "none";
+                    document.getElementById("displayaftrun").style.display = "none";
+                }
+            },
+        })
+    }
+</script>
+{% endblock script %}

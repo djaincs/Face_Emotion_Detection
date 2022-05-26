@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block style %}
+#camera{
+    width: 350px;
+    height: 350px;
+    border: 1px solid black;}
+
+{% endblock style %}
+
+
+{% block body %}
+<div id="camera">
+
+</div>
+
+<button onclick="take_snapshot()">Take Snapshot</button>
+<div id="results"></div>
+{% endblock body %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+<script> 
+    //load all webcam
+    Webcam.set({
+        width:350,
+        height:350,
+        image_format:'jpeg',
+        jpeg_quality:90
+
+    })
+    Webcam.attach("#camera")
+
+    
+
+    function take_snapshot(){
+
+        
+
+        Webcam.snap(function(data_uri){
+            //display results in page
+            document.getElementById('results').innerHTML =
+             '<img src="'+data_uri+'"/>';
+        });
+
+         {% comment %} Webcam.reset(); {% endcomment %}
+          
+    }
+    
+    
+</script>
+
+{% endblock script %}
+
+
