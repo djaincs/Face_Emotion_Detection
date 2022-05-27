@@ -62,7 +62,3 @@ def webcam(request):
 def emotion_detection(request):
     return render(request,"emotion_detection.html")  
 
-def emotion_detection_static_image(request):
-
-
-    return render(request,"static-image.html")  
